@@ -60,7 +60,7 @@ class MemoryMemberRepositoryTest {
         member4.setName("전승희");
         repo.save(member4);
 
-        List<Member> result = repo.finAll();
+        List<Member> result = repo.findAll();
 
         assertThat(result.size()).isEqualTo(4);
 
