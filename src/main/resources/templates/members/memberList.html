@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>이름</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="member : ${members}"> <!--Model에 넣었던 members의 갯수만큼 member에 넣으면서 each(반복)-->
+          <td th:text="${member.id}"></td>
+          <td th:text="${member.name}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> <!-- /container -->
+</body>
+</html>
