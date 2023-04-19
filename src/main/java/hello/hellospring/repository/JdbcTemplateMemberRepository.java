@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import javax.sql.DataSource;
@@ -39,7 +40,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findById(Long id) {
-        List<Member> result = jdbcTemplate.query("select * from member where id =?", memberRowMapper());
+        List<Member> result = jdbcTemplate.query("select * from member where id =?", memberRowMapper(),id);
         return result.stream().findAny();
     }
 
@@ -52,7 +53,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository{
     @Override
     public Optional<Member> findByName(String name) {
 
-        List<Member> result = jdbcTemplate.query("select * from member where name = ?", memberRowMapper());
+        List<Member> result = jdbcTemplate.query("select * from member where name = ?", memberRowMapper(),name);
 
         return result.stream().findAny();
     }
